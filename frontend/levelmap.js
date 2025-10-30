@@ -1,6 +1,6 @@
 const mapContainer = document.getElementById("map");
 const levels = 20; // Total number of levels
-let currentLevel = 1; // Player starts at level 1
+let currentLevel = 9; // Player starts at level 1
 
 // Function to generate the map tiles
 function generateMap() {
