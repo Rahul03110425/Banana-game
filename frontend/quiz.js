@@ -1,3 +1,6 @@
+myApp.checkUser(); 
+const user = myApp.user
+
 const apiUrl = "http://localhost:3000";
 const timer = document.getElementById("quiz__timer");
 const img = document.getElementById("quiz__image");
@@ -6,6 +9,7 @@ const submitButton = document.querySelector('.quiz__button--enter');
 const resultIncorrect = document.querySelector('.result--incorrect');
 const resultCorrect = document.querySelector('.result--correct');
 const resultTimeup = document.querySelector('.result--timeup');
+const resultCorrectBtn = document.querySelector('.result__button--correct');
 let answer = null
 
 quizForm.addEventListener('submit', function(event) {
@@ -15,14 +19,44 @@ quizForm.addEventListener('submit', function(event) {
 
     if (quizAnswer == answer) {  
         console.log('Correct answer!');
+        clearInterval(intervalId);
         resultCorrect.style.display = "flex"
     } else {
         resultIncorrect.style.display = "flex"
     }
 });
 
+resultCorrectBtn.addEventListener('click', function() {
+    fetch(`${apiUrl}/user/level`, {
+        headers: {
+            "Authorization": `Bearer ${myApp.user.token}`
+        }, method: "POST"
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("response was not okay");
+            }
+            return response.json();
+        })
+        .then(() => {
+            localStorage.setItem('user', JSON.stringify({...user, level: user.level + 1}))
+            window.location.href = '/levels.html'
+        }
+        )
+        .catch((error) => {
+            console.error(
+                "There was a problem with the fetch operation:",
+                error
+            );
+        });
+});
+
 function load_image () {
-    fetch(`${apiUrl}/quiz`)
+    fetch(`${apiUrl}/quiz`, {
+        headers: {
+            "Authorization": `Bearer ${myApp.user.token}`
+        }
+    })
         .then((response) => {
             if (!response.ok) {
                 throw new Error("response was not okay");

@@ -18,10 +18,10 @@
             <div class="login">
                 <div class="login__container">
                     <h1 class="login__title poetsen-one-regular">LOGIN</h1>
-                    <form action="" class="login__form">
+                    <form action="" class="login__form" id="login__form">
                         <div class="login__inputs">
-                            <input type="text" name="" class="login__input" id="" placeholder="Email">
-                            <input type="text" name="" class="login__input" id="" placeholder="Password">
+                            <input required type="text" name="" class="login__input" id="email" placeholder="Email">
+                            <input required type="password" name="" class="login__input" id="password" placeholder="Password">
                         </div>
                         <button type="submit" class="login__submit__button">Enter</button>
                     </form>
@@ -31,5 +31,7 @@
                 <img class="login__img" src="/assets/login.png" alt="">
             </div> 
         </main>
+        <script src="utils.js"></script>
+        <script src="login.js"></script>
     </body>
 </html>

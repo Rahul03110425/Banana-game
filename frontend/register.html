@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
+        <title>Login</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,12 +18,12 @@
             <div class="login">
                 <div class="login__container">
                     <h1 class="login__title poetsen-one-regular">REGISTER</h1>
-                    <form action="" class="login__form">
+                    <form action="" class="login__form" id="login__form">
                         <div class="login__inputs">
-                            <input type="text" name="" class="login__input" id="" placeholder="Username">
-                            <input type="text" name="" class="login__input" id="" placeholder="Email">
-                            <input type="text" name="" class="login__input" id="" placeholder="Password">
-                            <input type="text" name="" class="login__input" id="" placeholder="Re-enter Password">
+                            <input required type="text" name="" class="login__input" id="username" placeholder="Username">
+                            <input required type="text" name="" class="login__input" id="email" placeholder="Email">
+                            <input required type="password" name="" class="login__input" id="password" placeholder="Password">
+                            <input required type="password" name="" class="login__input" id="confirmPassword" placeholder="Re-enter Password">
                         </div>
                         <button type="submit" class="login__submit__button">Enter</button>
                     </form>
@@ -32,6 +32,9 @@
                 </div>
                 <img class="login__img" src="/assets/login.png" alt="">
             </div> 
-        </main>
+        </main>  
+        
+        <script src="utils.js"></script>
+        <script src="register.js"></script>
     </body>
 </html>

@@ -28,14 +28,24 @@
                 <a href="/levels.html" class="quiz__goback">Go Back</a>
 
                 <form class="quiz__form">
-                    <label for="quiz_answer" id="quiz__label--answer" class="quiz__label--answer">Answer</label>
+                    <label
+                        for="quiz_answer"
+                        id="quiz__label--answer"
+                        class="quiz__label--answer"
+                        >Answer</label
+                    >
                     <input
                         type="number"
                         class="quiz__answer"
                         name=""
                         id="quiz__answer"
                     />
-                    <button type="submit" class="quiz__button quiz__button--enter">Enter</button>
+                    <button
+                        type="submit"
+                        class="quiz__button quiz__button--enter"
+                    >
+                        Enter
+                    </button>
                 </form>
 
                 <button class="quiz__button quiz__button--skip">Skip</button>
@@ -44,23 +54,43 @@
 
         <div class="result result--correct" id="result--correct">
             <div class="result__content">
-                <h1 class="title result__title result__title--correct">Correct</h1>
-                <a href="/quiz.html" class="result__button result__button--correct">Next Level</a>
+                <h1 class="title result__title result__title--correct">
+                    Correct
+                </h1>
+                <button class="result__button result__button--correct" id="result__button--correct">
+                    Next Level
+                </button>
             </div>
         </div>
 
         <div class="result result--incorrect" id="result--incorrect">
             <div class="result__content">
-                <h1 class="title result__title result__title--incorrect">Incorrect</h1>
-                <a href="/quiz.html" class="result__button result__button--incorrect">try again</a>
+                <h1 class="title result__title result__title--incorrect">
+                    Incorrect
+                </h1>
+                <a
+                    href="/quiz.html"
+                    class="result__button result__button--incorrect"
+                    >try again</a
+                >
             </div>
         </div>
         <div class="result result--timeup" id="result--timeup">
             <div class="result__content">
-                <h1 class="title result__title result__title--timeup">Time Up</h1>
-                <a href="/quiz.html" class="result__button result__button--timeup">try again</a>
+                <h1 class="title result__title result__title--timeup">
+                    Time Up
+                </h1>
+                <a
+                    href="/quiz.html"
+                    class="result__button result__button--timeup"
+                    >try again</a
+                >
             </div>
         </div>
+
+        <img src="./assets/logout.svg" id="logout" alt="">
+        <script src="utils.js"></script>
         <script src="quiz.js"></script>
+        <script src="logout.js"></script>
     </body>
 </html>

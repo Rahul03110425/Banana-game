@@ -12,6 +12,20 @@
     font-size: 60px;
 }
 
+#logout {
+    background-color: rgba(255, 0, 0, 0.281);
+    padding: 1rem;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    cursor: pointer;
+}
+
+#logout:hover {
+    background-color: rgba(255, 0, 0, 0.432);
+}
+
 * {
     margin: 0;
 }
@@ -369,7 +383,7 @@
 }
 
 .level-tile.active {
-    background-color: #ff5722; /* Active level color */
+    background-color: #fc6e43; /* Active level color */
 }
 
 .level-tile.locked {
