@@ -1,6 +1,9 @@
 myApp.checkUser(); 
 const user = myApp.user
 
+const urlParams = new URLSearchParams(window.location.search);
+const level = urlParams.get("level");
+
 const apiUrl = "http://localhost:3000";
 const timer = document.getElementById("quiz__timer");
 const img = document.getElementById("quiz__image");
@@ -54,7 +57,7 @@ resultCorrectBtn.addEventListener('click', function() {
 function load_image () {
     fetch(`${apiUrl}/quiz`, {
         headers: {
-            "Authorization": `Bearer ${myApp.user.token}`
+            "Authorization": `Bearer ${user.token}`
         }
     })
         .then((response) => {
@@ -80,7 +83,7 @@ function unload_img() {
     img.src = "";
 }
 
-let count = 90;
+let count = 90 * (1 - ((level-1) / 24));
 const intervalId = setInterval(() => {
     if (count === 0) {
         resultTimeup.style.display = "flex";
