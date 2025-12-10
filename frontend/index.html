@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Banana</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <main class="home">
-            <div class="">
-                <a class="home__link" href="/quiz.html">quiz</a>
-                <a class="home__link" href="/login.html">Login</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banana</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="home__body">
+        <div class="container game-wrapper">
+      <header class="game-header">
+        <div class="brand game-brand">
+          <div class="logo bounce">🍌</div>
+          <div>
+            <h1 class="game-title">Banana Quiz</h1>
+            <div class="muted">A fun fruity challenge!</div>
+          </div>
+        </div>
+
+        <nav class="game-nav">
+          <a class="btn btn-ghost" href="/levels.html">Play</a>
+          <a class="btn btn-cta" href="/login.html">Login</a>
+        </nav>
+      </header>
+
+      <main class="hero improved">
+        <!-- LEFT: About / Game Info -->
+        <section class="panel panel-glass">
+          <div class="about-title">About the Game</div>
+          <p class="lead">A fast-paced, fruity quiz adventure! Answer banana-themed questions, climb levels, and dominate the global leaderboard!</p>
+
+          <div class="features features-cute">
+            <div class="feature cute-card"><div class="dot dot-big"></div><p><strong>60‑second rounds</strong><br/><span class="muted">Fast. Fun. Addictive.</span></p></div>
+            <div class="feature cute-card"><div class="dot dot-green"></div><p><strong>Global ranks</strong><br/><span class="muted">Compete with everyone</span></p></div>
+            <div class="feature cute-card"><div class="dot dot-orange"></div><p><strong>Weekly levels</strong><br/><span class="muted">Always something new</span></p></div>
+            <div class="feature cute-card"><div class="dot dot-purple"></div><p><strong>Bonus streaks</strong><br/><span class="muted">Win more with combos</span></p></div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-cta btn-big" href="/levels.html">Start Playing 🎮</a>
+          </div>
+        </section>
+
+        <!-- RIGHT: Leaderboard -->
+        <aside class="leaderboard-card cute-shadow" aria-labelledby="leaderboard-title">
+          <div class="leaderboard-header">
+            <div>
+              <h3 id="leaderboard-title">Top Players</h3>
+              <div class="leaderboard-sub">Live rankings</div>
             </div>
-        </main>
-        <script src="index.js"></script>
-    </body>
+            <div class="muted">🔥</div>
+          </div>
+
+          <ul id="leaderboard-list" class="leaderboard-list" role="list"></ul>
+
+        </aside>
+      </main>
+    </div>
+    <script src="index.js"></script>
+  </body>
 </html>

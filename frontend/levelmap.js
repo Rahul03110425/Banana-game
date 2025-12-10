@@ -30,7 +30,7 @@ function generateMap() {
         // Add click event to navigate through the levels
         levelTile.addEventListener("click", () => {
             if (i <= currentLevel) {
-                window.location.href = "/quiz.html";
+                window.location.href = `/quiz.html?level=${i}`;
             }
         });
 

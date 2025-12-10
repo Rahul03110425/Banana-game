@@ -1,15 +1,15 @@
-const { connectToDatabase } = require("./database"); 
-const bcrypt = require("bcryptjs"); 
-const validator = require('validator');
+const { connectToDatabase } = require("./database");
+const bcrypt = require("bcryptjs");
+const validator = require("validator");
 
 async function addUser(userData) {
     const { email, username, password, level } = userData;
 
     // Check if the required fields exist
-    if (!email ) {
+    if (!email) {
         throw new Error("email can't be empty");
     }
-    if (!username ) {
+    if (!username) {
         throw new Error("username can't be empty");
     }
     if (!password) {
@@ -20,9 +20,9 @@ async function addUser(userData) {
         throw new Error("Invalid email format.");
     }
 
-    console.log(email)
-    console.log(password)
-    console.log(username)
+    console.log(email);
+    console.log(password);
+    console.log(username);
     const db = await connectToDatabase();
     const collection = db.collection("user");
 
@@ -43,10 +43,9 @@ async function addUser(userData) {
         level: level || 0,
     });
 
-    
     const insertedUser = await collection.findOne({ _id: result.insertedId });
 
-    return insertedUser;  
+    return insertedUser;
 }
 
 async function getUser(userIdentifier) {
@@ -54,7 +53,11 @@ async function getUser(userIdentifier) {
     const collection = db.collection("user");
 
     const user = await collection.findOne({
-        $or: [{_id: userIdentifier}, { email: userIdentifier }, { username: userIdentifier }],
+        $or: [
+            { _id: userIdentifier },
+            { email: userIdentifier },
+            { username: userIdentifier },
+        ],
     });
 
     return user;
@@ -68,15 +71,15 @@ async function updateUser(userId, updatedData) {
         { _id: userId },
         { $set: updatedData }
     );
-    console.log('Update Result:', result); // Log the result to check if the update was successful
+    console.log("Update Result:", result); // Log the result to check if the update was successful
     return result;
 }
 
 async function updateLevel(userId, email) {
-    const user = await getUser(email)
-    console.log(user)
-    console.log("user level", user.level)
-    const newlevel = user.level + 1
+    const user = await getUser(email);
+    console.log(user);
+    console.log("user level", user.level);
+    const newlevel = user.level + 1;
     return await updateUser(user._id, { level: newlevel });
 }
 
@@ -85,6 +88,19 @@ async function deleteUser(userId) {
     const collection = db.collection("user");
     const result = await collection.deleteOne({ _id: userId });
     return result;
+}
+
+async function getLeaderboard() {
+    const db = await connectToDatabase();
+    const collection = db.collection("user");
+
+    // Specify which fields you want to include (1 for include, 0 for exclude)
+    const projection = { username: 1, level: 1 };
+
+    // Fetch leaderboard data and only include username and score
+    const leaderboard = await collection.find({}, { projection }).sort({ level: -1 }).limit(10).toArray();
+
+    return leaderboard;
 }
 
 async function comparePassword(plaintextPassword, hash) {
@@ -99,4 +115,5 @@ module.exports = {
     updateUser,
     updateLevel,
     comparePassword,
+    getLeaderboard
 };

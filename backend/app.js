@@ -13,6 +13,7 @@ const {
     updateUser,
     comparePassword,
     updateLevel,
+    getLeaderboard
 } = require("./userModel");
 const { authenticate } = require("./middleware");
 
@@ -87,6 +88,15 @@ app.post("/user/level", authenticate, async (req, res) => {
     }
 });
 
+app.get("/leaderboard", async (req, res) => {
+   try {
+        const users = await getLeaderboard()
+        res.json({users})
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.status(500).send("Failed to fetch data");
+    } 
+})
 app.get("/quiz", authenticate, async (req, res) => {
     try {
         const response = await axios.get(
